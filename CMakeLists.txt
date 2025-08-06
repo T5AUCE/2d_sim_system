@@ -12,7 +12,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # Add SFML
 include(FetchContent)
-FetchContent_Declare(SFML
+FetchContent_Declare(
+    SFML
     GIT_REPOSITORY https://github.com/SFML/SFML.git
     GIT_TAG 3.0.1
     GIT_SHALLOW ON
