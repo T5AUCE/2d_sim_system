@@ -7,8 +7,8 @@ int main()
 {
     constexpr int32_t window_width = 800;
     constexpr int32_t window_length = 800;
-    const int rows = 10;
-    const int columns = 10;
+    const int rows = 50;
+    const int columns = 50;
     const sf::Vector2f acceleration{ 10.0f,10.0f };
 
     float horizontal_increment = 0.0f;
