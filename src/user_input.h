@@ -37,6 +37,7 @@ public:
 			particle.prev_position = particle.position;
 		}
 	}
+
 private:
 	static sf::Vector2f gravity_effect(sf::Vector2f distance) {
 		sf::Vector2f mass{ 50000.0f,50000.0f };
