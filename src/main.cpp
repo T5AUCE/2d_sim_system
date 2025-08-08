@@ -7,12 +7,13 @@ int main()
 {
     constexpr int32_t window_width = 800;
     constexpr int32_t window_length = 800;
-    const int rows = 50;
-    const int columns = 50;
-    const sf::Vector2f acceleration{ 10.0f,10.0f };
+    const float rows = 75.0f;
+    const float columns = 75.0f;
+    const float radius = 1.0f;
+    const sf::Vector2f acceleration{ 40.0f,40.0f };
 
-    float horizontal_increment = 0.0f;
-    float vertical_increment = 0.0f;
+    float horizontal_increment = 0 - radius;
+    float vertical_increment = 0 - radius;
     
     sf::Color color;
     sf::RenderWindow window(sf::VideoMode({ window_width,window_length }), "2d_sim_system");
@@ -23,13 +24,13 @@ int main()
     std::vector<Particle> dots;
 
     for (int i = 0; i < rows; i++) {
-        horizontal_increment = 0;
+        horizontal_increment = 0 - radius;
         vertical_increment += window_width / (columns + 1);
         for (int j = 0; j < columns; j++) {
             horizontal_increment += window_length / (rows + 1);
             sf::Vector2f position{horizontal_increment,vertical_increment};
 
-            int generate_color = std::rand() % 4;
+            int generate_color = std::rand() % 8;
             if (generate_color == 1) {
                 color = sf::Color::Blue;
             }
@@ -39,11 +40,20 @@ int main()
             else if (generate_color == 3) {
                 color = sf::Color::Magenta;
             }
-            else {
+            else if (generate_color == 4) {
                 color = sf::Color::Green;
             }
+            else if (generate_color == 5) {
+                color = sf::Color::Yellow;
+            }
+            else if (generate_color == 6) {
+                color = sf::Color::Cyan;
+            }
+            else if (generate_color == 7) {
+                color = sf::Color::White;
+            }
 
-            dots.emplace_back(position, acceleration,color);
+            dots.emplace_back(position, acceleration, color, radius);
         }
     }
 

@@ -7,13 +7,14 @@ struct Particle {
 	sf::Vector2f prev_position;
 	sf::Vector2f acceleration;
 	sf::Color color;
-	float radius = 3.0f;
+	float radius = 2.0f;
 
-	Particle(sf::Vector2f position_, sf::Vector2f acceleration_, sf::Color color_) :
+	Particle(sf::Vector2f position_, sf::Vector2f acceleration_, sf::Color color_, float radius_) :
 		position{position_},
 		prev_position{ position_},
-		acceleration{10.0f,10.0f},
-		color{color_}
+		acceleration{acceleration_},
+		color{color_},
+		radius{radius_}
 	{}
 
 	void update(float deltaT) {
@@ -44,7 +45,6 @@ struct Particle {
 		return displace;
 	}
 
-	/* Changer */
 	void changeAcceleration(sf::Vector2f a) {
 		acceleration += a;
 	}
