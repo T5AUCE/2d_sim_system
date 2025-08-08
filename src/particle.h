@@ -44,15 +44,6 @@ struct Particle {
 		return displace;
 	}
 
-	/* Setters */
-	void setPrevious(sf::Vector2f prv) {
-		prev_position = prv;
-	}
-
-	void setPosition(sf::Vector2f p) {
-		position = p;
-	}
-
 	/* Changer */
 	void changeAcceleration(sf::Vector2f a) {
 		acceleration += a;

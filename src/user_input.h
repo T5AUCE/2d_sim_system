@@ -3,9 +3,8 @@
 class UserInput {
 public:
 	static void mouse_click(Particle& particle, sf::RenderWindow& window) {
-		
-		sf::Vector2f stop_range{ 25.0f,25.0f };
-		sf::Vector2f soften{ 0.01f,0.01f };
+		sf::Vector2f stop_range{ 5.0f,5.0f };
+		sf::Vector2f soften{ 0.1f,0.1f };
 
 		sf::Vector2f mouse_pos = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 		sf::Vector2f distance = mouse_pos - particle.position;
@@ -14,22 +13,28 @@ public:
 		sf::Vector2f toward = gravity_effect(distance);
 		sf::Vector2f away = gravity_effect(opposite);
 		
-		// Left mouse
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 		{
-			if (distance.lengthSquared() < stop_range.lengthSquared()) {
+			// Stop at cursor
+			if (distance.length() < stop_range.length()) {
 				sf::Vector2f displace = particle.position - particle.prev_position;
-				particle.prev_position += displace.componentWiseMul(soften);
+				sf::Vector2f distance_ratio{distance.length()/stop_range.length(),distance.length() / stop_range.length()};
+				particle.prev_position += displace.componentWiseMul(distance_ratio);
 			}
 			else {
 				particle.changeAcceleration(toward);
 			}
 		}
 
-		// Right mouse
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
 		{
-				particle.changeAcceleration(away);
+			particle.changeAcceleration(away);
+		}
+	}
+
+	static void freeze(Particle& particle, sf::RenderWindow& window) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::F)) {
+			particle.prev_position = particle.position;
 		}
 	}
 private:

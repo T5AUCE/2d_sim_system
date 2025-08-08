@@ -62,6 +62,7 @@ int main()
 
         for (auto& dot : dots) {
             user.mouse_click(dot, window);
+            user.freeze(dot, window);
             render.create(dot);
         }
 
