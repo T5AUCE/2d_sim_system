@@ -1,6 +1,4 @@
-#pragma once
 #include "particle.h"
-#include "user_input.h"
 
 class Render {
 private:
@@ -14,14 +12,13 @@ public:
 	{}
 
 	void create(Particle& particle) {
-		target.clear(sf::Color::Black);
 		
 		float dt = 1.0f / 60;
 		particle.update(dt);
 
-		circle.setPosition(particle.getPosition());
-		circle.setScale({particle.getRadius(),particle.getRadius()});
-		circle.setFillColor(sf::Color::Blue);
+		circle.setPosition(particle.position);
+		circle.setScale({particle.radius,particle.radius});
+		circle.setFillColor(particle.color);
 		target.draw(circle);
 	}
 };
