@@ -7,7 +7,7 @@ private:
 
 public:
 	Render(sf::RenderTarget& target_) : 
-		target{target_},
+		target{ target_ },
 		circle(1.0f)
 	{}
 
@@ -16,7 +16,7 @@ public:
 		particle.update(dt, length, width);
 
 		circle.setPosition(particle.position);
-		circle.setScale({particle.radius,particle.radius});
+		circle.setScale({ particle.radius,particle.radius} );
 		circle.setFillColor(particle.color);
 		target.draw(circle);
 	}

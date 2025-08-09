@@ -17,7 +17,8 @@ public:
 		{
 			/* Within certain radius, approach and slow down (to prevent chaos) */ 
 			if (distance.length() < stop_range.length()) {
-				sf::Vector2f distance_ratio{distance.length() / (stop_range.length() * framerate) , distance.length() / (stop_range.length() * framerate)};
+				sf::Vector2f distance_ratio{ distance.length() / (stop_range.length() * framerate), 
+											 distance.length() / (stop_range.length() * framerate) };
 				particle.prev_position = particle.position;
 				particle.position += distance.componentWiseMul(distance_ratio);
 				particle.acceleration = {};
@@ -42,7 +43,7 @@ public:
 private:
 	static sf::Vector2f gravity_effect(sf::Vector2f distance) {
 		sf::Vector2f cursor_mass{ 300000.0f,300000.0f };
-		sf::Vector2f magnitude{ distance.length(),distance.length()};
+		sf::Vector2f magnitude{ distance.length(),distance.length() };
 		sf::Vector2f unit_vector = distance.componentWiseDiv(magnitude);
 
 		sf::Vector2f gravity_force = cursor_mass.componentWiseDiv(magnitude.componentWiseMul(magnitude));

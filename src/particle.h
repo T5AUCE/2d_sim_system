@@ -10,16 +10,16 @@ struct Particle {
 	float radius = 2.0f;
 
 	Particle(sf::Vector2f position_, sf::Vector2f acceleration_, sf::Color color_, float radius_) :
-		position{position_},
+		position{ position_ },
 		prev_position{ position_},
-		acceleration{acceleration_},
-		color{color_},
-		radius{radius_}
+		acceleration {acceleration_ },
+		color{ color_ },
+		radius{ radius_ }
 	{}
 
 	void update(float dt, int l, int w) {
 		sf::Vector2f displace = position - prev_position;
-		displace = atBounds(displace, l, w);
+		displace = atBounds(displace,l,w);
 		prev_position = position;
 		position = position + displace + acceleration * (dt * dt);
 		acceleration = {};

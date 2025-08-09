@@ -27,11 +27,11 @@ int main()
 
     for (int i = 0; i < rows; i++) {
         horizontal_increment = 0 - radius;
-        vertical_increment += window_length/ (columns + 1);
+        vertical_increment += window_length / (columns + 1);
 
         for (int j = 0; j < columns; j++) {
             horizontal_increment += window_width / (rows + 1);
-            sf::Vector2f position{horizontal_increment,vertical_increment};
+            sf::Vector2f position{ horizontal_increment,vertical_increment };
 
             int generate_color = std::rand() % 8;
             switch (generate_color) {
@@ -77,7 +77,7 @@ int main()
         for (auto& dot : dots) {
             user.mouse_click(dot, window, framerate);
             user.freeze(dot);
-            render.create(dot,window_length,window_width,framerate);
+            render.create(dot, window_length, window_width, framerate);
         }
         window.display();
     }
