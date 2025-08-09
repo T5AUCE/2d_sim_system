@@ -27,9 +27,9 @@ int main()
 
     for (int i = 0; i < rows; i++) {
         horizontal_increment = 0 - radius;
-        vertical_increment += window_width / (columns + 1);
+        vertical_increment += window_length/ (columns + 1);
         for (int j = 0; j < columns; j++) {
-            horizontal_increment += window_length / (rows + 1);
+            horizontal_increment += window_width / (rows + 1);
             sf::Vector2f position{horizontal_increment,vertical_increment};
 
             int generate_color = std::rand() % 8;
@@ -59,6 +59,7 @@ int main()
         }
     }
 
+    /* Main Loop */
     while (window.isOpen())
     {
         while (const std::optional event = window.pollEvent())
@@ -73,9 +74,8 @@ int main()
         for (auto& dot : dots) {
             user.mouse_click(dot, window, framerate);
             user.freeze(dot, window);
-            render.create(dot,framerate);
+            render.create(dot,window_length,window_width,framerate);
         }
-
         window.display();
     }
 }

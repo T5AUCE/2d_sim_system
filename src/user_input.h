@@ -15,7 +15,7 @@ public:
 		
 		if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
 		{
-			/*Within certain radius, approach and slow down(to prevent chaos)*/ 
+			/*Within certain radius, approach and slow down (to prevent chaos)*/ 
 			if (distance.length() < stop_range.length()) {
 				sf::Vector2f distance_ratio{distance.length() / (stop_range.length() * framerate) , distance.length() / (stop_range.length() * framerate)};
 				particle.prev_position = particle.position;
