@@ -28,31 +28,34 @@ int main()
     for (int i = 0; i < rows; i++) {
         horizontal_increment = 0 - radius;
         vertical_increment += window_length/ (columns + 1);
+
         for (int j = 0; j < columns; j++) {
             horizontal_increment += window_width / (rows + 1);
             sf::Vector2f position{horizontal_increment,vertical_increment};
 
             int generate_color = std::rand() % 8;
-            if (generate_color == 1) {
-                color = sf::Color::Blue;
-            }
-            else if (generate_color == 2) {
-                color = sf::Color::Red;
-            }
-            else if (generate_color == 3) {
-                color = sf::Color::Magenta;
-            }
-            else if (generate_color == 4) {
-                color = sf::Color::Green;
-            }
-            else if (generate_color == 5) {
-                color = sf::Color::Yellow;
-            }
-            else if (generate_color == 6) {
-                color = sf::Color::Cyan;
-            }
-            else if (generate_color == 7) {
-                color = sf::Color::White;
+            switch (generate_color) {
+                case 1:
+                    color = sf::Color::Blue;
+                    break;
+                case 2:
+                    color = sf::Color::Red;
+                    break;
+                case 3:
+                    color = sf::Color::Magenta;
+                    break;
+                case 4:
+                    color = sf::Color::Green;
+                    break;
+                case 5:
+                    color = sf::Color::Yellow;
+                    break;
+                case 6:
+                    color = sf::Color::Cyan;
+                    break;
+                case 7:
+                    color = sf::Color::White;
+                    break;
             }
 
             dots.emplace_back(position, acceleration, color, radius);
@@ -73,7 +76,7 @@ int main()
 
         for (auto& dot : dots) {
             user.mouse_click(dot, window, framerate);
-            user.freeze(dot, window);
+            user.freeze(dot);
             render.create(dot,window_length,window_width,framerate);
         }
         window.display();
