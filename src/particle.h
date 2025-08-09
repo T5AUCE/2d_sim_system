@@ -17,11 +17,11 @@ struct Particle {
 		radius{radius_}
 	{}
 
-	void update(float deltaT) {
+	void update(float dt) {
 		sf::Vector2f displace = position - prev_position;
 		displace = atBounds(displace);
 		prev_position = position;
-		position = position + displace + acceleration * (deltaT * deltaT);
+		position = position + displace + acceleration * (dt * dt);
 		acceleration = {};
 	}
 

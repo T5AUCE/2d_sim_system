@@ -11,9 +11,8 @@ public:
 		circle(1.0f)
 	{}
 
-	void create(Particle& particle) {
-		
-		float dt = 1.0f / 60;
+	void create(Particle& particle, float framerate) {
+		float dt = 1 / framerate;
 		particle.update(dt);
 
 		circle.setPosition(particle.position);

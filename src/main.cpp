@@ -5,8 +5,9 @@
 
 int main()
 {
-    const int window_width = 800;
-    const int window_length = 800;
+    constexpr int window_width = 800;
+    constexpr int window_length = 800;
+    const float framerate = 60.0f;
     const float rows = 75.0f;
     const float columns = 75.0f;
     const float radius = 1.0f;
@@ -17,7 +18,7 @@ int main()
     
     sf::Color color;
     sf::RenderWindow window(sf::VideoMode({ window_width,window_length }), "2d_sim_system");
-    window.setFramerateLimit(144);
+    window.setFramerateLimit(framerate);
 
     Render render(window);
     UserInput user;
@@ -70,9 +71,9 @@ int main()
         window.clear();
 
         for (auto& dot : dots) {
-            user.mouse_click(dot, window);
+            user.mouse_click(dot, window, framerate);
             user.freeze(dot, window);
-            render.create(dot);
+            render.create(dot,framerate);
         }
 
         window.display();
